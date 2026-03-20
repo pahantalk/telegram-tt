@@ -19,6 +19,7 @@ interface ConnectionInterfaceParams {
   loggers: Logger;
   isPremium?: boolean;
   isTestServer?: boolean;
+  proxy?: typeof DEFAULT_PROXY;
 }
 
 /**
@@ -36,33 +37,21 @@ export class Connection {
   PacketCodecClass?: typeof AbridgedPacketCodec;
 
   readonly _ip: string;
-
   readonly _port: number;
-
   _dcId: number;
-
   _log: Logger;
-
   _connected: boolean;
-
   _isPremium?: boolean;
-
   shouldLongPoll: boolean;
+  private _proxy?: typeof DEFAULT_PROXY; // <-- ДОБАВЛЯЕМ СЮДА
 
   private _sendTask?: Promise<void>;
-
   private _recvTask?: Promise<void>;
-
   protected _codec: any;
-
   protected _obfuscation: any;
-
   _sendArray: AsyncQueue<Buffer<ArrayBuffer>>;
-
   _recvArray: AsyncQueue<Buffer<ArrayBuffer> | undefined>;
-
   socket: PromisedWebSockets | HttpStream;
-
   public _isTestServer?: boolean;
 
   constructor({
