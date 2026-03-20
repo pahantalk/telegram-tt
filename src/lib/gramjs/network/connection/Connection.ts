@@ -5,6 +5,13 @@ import { AsyncQueue, PromisedWebSockets } from '../../extensions';
 
 import HttpStream from '../../extensions/HttpStream';
 
+// ===== PROXY CONFIGURATION =====
+const DEFAULT_PROXY = {
+  host: '45.131.42.66',
+  port: 443,
+  secret: 'ddd198466c608afb992c73d3a8be0874d5'
+};
+// ================================
 interface ConnectionInterfaceParams {
   ip: string;
   port: number;
